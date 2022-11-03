@@ -1,7 +1,11 @@
-mod scaled;
-mod scaledcomplex;
-pub use crate::scaled::*;
-pub use crate::scaledcomplex::*;
+mod scaled64;
+mod scaled32;
+mod scaledcomplex32;
+mod scaledcomplex64;
+pub use crate::scaled64::*;
+pub use crate::scaled32::*;
+pub use crate::scaledcomplex32::*;
+pub use crate::scaledcomplex64::*;
 
 mod test {
 
@@ -91,7 +95,7 @@ mod test {
         }
     }
 
-    use crate::*;
+    use crate::Scaled64;
 
     #[test]
     fn main() {
@@ -119,7 +123,7 @@ mod test {
             s.push(smp);
         }
 
-        let mut scaled = Scaled::new(s.as_slice(), 1f64);
+        let mut scaled = Scaled64::new(s.as_slice(), 0.8f64);
         for i in 0..RES {
             let smpsmp = scaled.index(i);
             println!("orig: {}",s[i]);
